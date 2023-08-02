@@ -343,57 +343,55 @@ void loop(){
 
   delay(50);  // delay in between reads for stability
 
-    while (sensorValue < 1) {
+    if (sensorValue < 1) {
       Sound();
-      goto nomusic;
+      
     }
-    while (sensorValue1 < 1) {
+    if (sensorValue1 < 1) {
       NoteC3();
-      goto nomusic;
+      
     }
-    while (sensorValue2 < 1) {
+    if (sensorValue2 < 1) {
       NoteCS3();
-      goto nomusic;
+      
     }
-    while (sensorValue3 < 1) {
+    if (sensorValue3 < 1) {
       NoteD3();
-      goto nomusic;
+      
     }
-    while (sensorValue4 < 1) {
+    if (sensorValue4 < 1) {
       NoteDS3();
-      goto nomusic;
+      
     }
-    while (sensorValue5 < 1) {
+    if (sensorValue5 < 1) {
       NoteE3();
-      goto nomusic;
+      
     }
-    while (sensorValue6 < 1) {
+    if (sensorValue6 < 1) {
       NoteF3();
-      goto nomusic;
+      
     }
-    while (sensorValue7 < 1) {
+    if (sensorValue7 < 1) {
       NoteFS3();
-      goto nomusic;
+      
     }
-    while (sensorValue8 < 1) {
+    if (sensorValue8 < 1) {
       NoteG3();
-      goto nomusic;
+      
     }
-    while (sensorValue9 < 1) {
+    if (sensorValue9 < 1) {
       NoteGS3();
-      goto nomusic;
     }
-    while (sensorValue10 < 1) {
+    if (sensorValue10 < 1) {
       NoteA3();
-      goto nomusic;
+     
     }
-    while (sensorValue11 < 1) {
+    if (sensorValue11 < 1) {
       NoteAS3();
-      goto nomusic;
+      
     }
-    while (sensorValue12 < 1) {
+    if (sensorValue12 < 1) {
       NoteB3();
-      goto nomusic;
     }
 
 
