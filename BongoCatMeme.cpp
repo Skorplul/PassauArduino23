@@ -309,6 +309,67 @@ void NoteB3() {
   }
 }
 
+void TEQUILA() {
+    // read the input on analog pin 0:
+  int sensorValue = analogRead(A0);
+  // print out the value you read:
+  Serial.println(sensorValue);
+  delay(50);  // delay in between reads for stability
+
+    // notes in the melody:
+  int melody[] = {
+    NOTE_F3, NOTE_F3, NOTE_ES3, NOTE_G3, NOTE_E3, NOTE_F3, NOTE_C3, PAUSE, NOTE_F3, NOTE_F3, NOTE_ES3, NOTE_G3, NOTE_E3, NOTE_F3, PAUSE, NOTE_D3, NOTE_E3, NOTE_G3, NOTE_B3, NOTE_G3, PAUSE, NOTE_G3, PAUSE, NOTE_D3, NOTE_E3, NOTE_G3, 
+    NOTE_B3, NOTE_G3, PAUSE, NOTE_G3, PAUSE, NOTE_D3, NOTE_E3, NOTE_G3, NOTE_B3, NOTE_F3, NOTE_A3, NOTE_A3, NOTE_A3, NOTE_A3, NOTE_A3, NOTE_A3, PAUSE, 
+    NOTE_D3, 
+  };
+
+  // note durations: 4 = quarter note, 8 = eighth note, etc.:
+  int noteDurations[] = {
+    4, 8, 8, 8, 4, 4, 8, 2, 4, 8, 8, 8, 8, 4, 2, 8, 8, 8, 2, 4, 8, 8, 8, 8, 8, 8, 2, 4, 8, 8, 8, 8, 8, 8, 2, 2, 8, 8, 8, 8, 4, 4, 8, 8,
+  };
+  
+  
+    // iterate over the notes of the melody:
+    for (int thisNote = 0; thisNote < 44; thisNote++) {
+
+      // to calculate the note duration, take one second divided by the note type.
+      //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
+      int noteDuration = 1300 / noteDurations[thisNote];
+      tone(8, melody[thisNote], noteDuration);
+
+      // to distinguish the notes, set a minimum time between them.
+      // the note's duration + 30% seems to work well:
+      int pauseBetweenNotes = noteDuration * 1.30;
+      delay(pauseBetweenNotes);
+      // stop the tone playing:
+      noTone(8);
+    }
+    delay(100);
+  
+    int melody2[] = {
+      NOTE_A4
+    };
+
+    int noteDurations2[] = {
+      4
+    };
+
+    for (int thisNote = 0; thisNote < 0; thisNote++) {
+
+      // to calculate the note duration, take one second divided by the note type.
+      //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
+      int noteDuration = 1000 / noteDurations2[thisNote];
+      tone(8, melody2[thisNote], noteDuration);
+
+      // to distinguish the notes, set a minimum time between them.
+      // the note's duration + 30% seems to work well:
+      int pauseBetweenNotes = noteDuration * 1.30;
+      delay(pauseBetweenNotes);
+      // stop the tone playing:
+      noTone(8);
+  
+    }
+}
 
 void loop(){
   nomusic:
@@ -326,6 +387,7 @@ void loop(){
   int sensorValue10 = analogRead(A10);
   int sensorValue11 = analogRead(A11);
   int sensorValue12 = analogRead(A12);
+  int sensorValue13 = analogRead(A13);
   // print out the value it read:
   Serial.println(sensorValue);
   Serial.println(sensorValue1);
@@ -340,8 +402,9 @@ void loop(){
   Serial.println(sensorValue10); 
   Serial.println(sensorValue11);
   Serial.println(sensorValue12);
+  Serial.println(sensorValue13);
 
-  delay(50);  // delay in between reads for stability
+  delay(100);  // delay in between reads for stability
 
     if (sensorValue < 1) {
       Sound();
@@ -393,7 +456,9 @@ void loop(){
     if (sensorValue12 < 1) {
       NoteB3();
     }
-
+    if (sensorValue13 < 1) {
+      TEQUILA();
+    }
 
 
 
