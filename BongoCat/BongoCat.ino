@@ -3,7 +3,7 @@
 
 // notes in the melody:
 int melody[] = {
-  NOTE_GS3, NOTE_B3, NOTE_GS3, NOTE_B3, NOTE_B3, NOTE_GS3, NOTE_FS3, NOTE_AS3, NOTE_FS3, NOTE_E3
+  NOTE_GS3, NOTE_B3, NOTE_GS3, NOTE_B3, NOTE_B3, NOTE_GS3, NOTE_FS3, NOTE_AS3, NOTE_FS3, 166
 };
 
 // note durations: 4 = quarter note, 8 = eighth note, etc.:
@@ -409,9 +409,74 @@ void Undertail() {
       // stop the tone playing:
       noTone(8);
     }
+}
+
+void TOT() {
+  // read the input on analog pin 0:
+  int sensorValue = analogRead(A0);
+  // print out the value you read:
+  Serial.println(sensorValue);
+  delay(50);  // delay in between reads for stability
+
+    // notes in the melody:
+  int melody[] = {
+  NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4, 
+
+  };
+
+  // note durations: 4 = quarter note, 8 = eighth note, etc.:
+  int noteDurations[] = {
+    4, 4, 4, 4, 4, 4, 4
+  };
+  
+    // iterate over the notes of the melody:
+    for (int thisNote = 0; thisNote < 7; thisNote++) {
+
+      // to calculate the note duration, take one second divided by the note type.
+      //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
+      int noteDuration = 1500 / noteDurations[thisNote];
+      tone(8, melody[thisNote], noteDuration);
+
+      // to distinguish the notes, set a minimum time between them.
+      // the note's duration + 30% seems to work well:
+      int pauseBetweenNotes = noteDuration * 7.00;
+      delay(pauseBetweenNotes);
+      // stop the tone playing:
+      noTone(8);
+    }
+
+    delay(100);
+
+  int melody2[] = {
+    NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4 
+
+  };
+
+  // note durations: 4 = quarter note, 8 = eighth note, etc.:
+  int noteDurations2[] = {
+    1, 1, 1, 1
+  };
+  
+    // iterate over the notes of the melody:
+    for (int thisNote = 0; thisNote < 4; thisNote++) {
+
+      // to calculate the note duration, take one second divided by the note type.
+      //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
+      int noteDuration2 = 2000 / noteDurations2[thisNote];
+      tone(8, melody2[thisNote], noteDuration2);
+
+      // to distinguish the notes, set a minimum time between them.
+      // the note's duration + 30% seems to work well:
+      int pauseBetweenNotes = noteDuration2 * 1.00;
+      delay(pauseBetweenNotes);
+      // stop the tone playing:
+      noTone(8);
+    }
+
 
 
 }
+
 
 void loop(){
   nomusic:
@@ -431,6 +496,7 @@ void loop(){
   int sensorValue12 = analogRead(A12);
   int sensorValue13 = analogRead(A13);
   int sensorValue14 = analogRead(A14);
+  int sensorValue15 = analogRead(A15);
   // print out the value it read:
   Serial.println(sensorValue);
   Serial.println(sensorValue1);
@@ -447,6 +513,7 @@ void loop(){
   Serial.println(sensorValue12);
   Serial.println(sensorValue13);
   Serial.println(sensorValue14);
+  Serial.println(sensorValue15);
 
 
   delay(10);  // delay in between reads for stability
@@ -507,7 +574,9 @@ void loop(){
     if (sensorValue14 < 1) {
       Undertail();
     }
-
+    if (sensorValue15 < 1) {
+      TOT();
+    }
 
 
 } 
