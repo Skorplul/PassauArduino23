@@ -8,7 +8,7 @@ int melody[] = {
 
 // note durations: 4 = quarter note, 8 = eighth note, etc.:
 int noteDurations[] = {
-  4, 8, 8, 8, 8, 4, 4, 8, 8, 4,
+  4, 8, 8, 8, 8, 4, 4, 8, 8, 4, 
 };
 
 void setup() {
@@ -448,21 +448,21 @@ void TOT() {
     delay(100);
 
   int melody2[] = {
-    NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4 
+    NOTE_AS4, NOTE_AS4, NOTE_AS4
 
   };
 
   // note durations: 4 = quarter note, 8 = eighth note, etc.:
   int noteDurations2[] = {
-    1, 1, 1, 1
+    1, 1, 1
   };
   
     // iterate over the notes of the melody:
-    for (int thisNote = 0; thisNote < 4; thisNote++) {
+    for (int thisNote = 0; thisNote < 3; thisNote++) {
 
       // to calculate the note duration, take one second divided by the note type.
       //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
-      int noteDuration2 = 2000 / noteDurations2[thisNote];
+      int noteDuration2 = 1300 / noteDurations2[thisNote];
       tone(8, melody2[thisNote], noteDuration2);
 
       // to distinguish the notes, set a minimum time between them.
